@@ -22,19 +22,21 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // import routes and give the server access to them
-var routes = require("./controllers/routes.js");
+var routes = require("./routes/routes.js");
 
 app.use('/', routes);
 
 db.sequelize.authenticate().then(function() {
   console.log('Database connected and authenticated!');
   return true;
-}).catch(function(err) {
-  console.error('Failed to connect and authenticate', err);
-  return false;
+})
+
+	.catch(function(err) {
+  		console.error('Failed to connect and authenticate', err);
+  		return false;
 });
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

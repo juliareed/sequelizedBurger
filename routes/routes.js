@@ -16,13 +16,13 @@ router.get("/", function(req , res) {
 });
 
 // create new burger
-router.post("/burgers/", function(req, res) {
+router.post("/burgers/create", function(req, res) {
     db.Burger.create({
         burger_name: req.body.burger_name
     })
         .then(function(newBurger){
             console.log("reloading burgers");
-            res.json(newBurger);
+            res.redirect("/");
     })
         .catch(function(err) {
             res.json(err);
@@ -31,7 +31,7 @@ router.post("/burgers/", function(req, res) {
 });
 
 // update devour it
-router.put("/:id", function(req, res) {
+router.put("/burgers/update", function(req, res) {
     console.log("devouring my burger");
     db.Burger.update({devoured: true} ,{
         where: {
@@ -40,7 +40,7 @@ router.put("/:id", function(req, res) {
     })
         .then(function(results){
             console.log("ate the burger");
-            res.json(results);
+            res.redirect("/");
     })
         .catch(function(err){
             res.json(err);
