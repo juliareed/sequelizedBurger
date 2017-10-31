@@ -36,7 +36,7 @@ router.put("/burgers/update", function(req, res) {
     console.log("devouring my burger");
     db.Burger.update({devoured: true} ,{
         where: {
-            id: req.params.id
+            id: req.body.id
         }
     })
         .then(function(results){
