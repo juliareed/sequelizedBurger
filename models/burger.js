@@ -24,5 +24,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: DataTypes.NOW
     }
   });
+  
   return Burger;
 };
