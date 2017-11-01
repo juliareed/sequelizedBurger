@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var id = $("#id").attr("value");
 		console.log("devouring");
 		$.ajax({
-			method: "PUT",
+			method: "DELETE",
 			url: "/" + id
 		})
 		.done(function() {

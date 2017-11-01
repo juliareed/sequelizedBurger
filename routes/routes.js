@@ -32,11 +32,11 @@ router.post("/burgers/create", function(req, res) {
 });
 
 // update devour it
-router.put("/burgers/update", function(req, res) {
+router.put("/burgers/:id", function(req, res) {
     console.log("devouring my burger");
     db.Burger.update({devoured: true} ,{
         where: {
-            id: req.body.id
+            id: req.body.burger_id
         }
     })
         .then(function(results){
